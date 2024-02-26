@@ -36,7 +36,7 @@ module.exports = {
             , response = {
                 length: result.length,
                 products: result.map(prod => {
-                    return {
+                    return { 
                         idProduct: prod.idProducts,
                         name: prod.name,
                         price: prod.price,
@@ -139,5 +139,8 @@ module.exports = {
         } catch (error) {
             return res.status(500).send({ error: error });
         }
+    },
+    async image(req, res, next) {
+        
     }
 }
