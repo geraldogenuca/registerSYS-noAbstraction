@@ -7,9 +7,9 @@ const express = require('express')
 //
 routes.post('/products', ProductsControllers.postProduct)
 routes.get('/products', ProductsControllers.indexProducts)
-//routes.post('/products', ProductsControllers.postProduct)
-//routes.post('/products', ProductsControllers.postProduct)
-//routes.post('/products', ProductsControllers.postProduct)
+routes.get('/products/:id', ProductsControllers.oneProduct)
+routes.patch('/products/:id', ProductsControllers.updatedProduct)
+routes.delete('/products', ProductsControllers.deletedProduct)
     
 
 module.exports = routes

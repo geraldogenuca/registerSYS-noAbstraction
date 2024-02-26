@@ -7,6 +7,6 @@
         "DB_PASS" : "root",
         "SERVER_PORT" : 4000,
         "JWT_SECRET" : "tamadaguapinho",
-        "URL_API" : "http://localhost:4000/"
+        "URL_API" : "https://localhost:4000/"
     }
 }
