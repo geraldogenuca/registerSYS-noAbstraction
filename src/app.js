@@ -3,6 +3,7 @@ const express = require('express')
 , app = express()
 , morgan = require('morgan')
 
+, ProductsRoutes = require('./routes/products.routes')
 
 
 // LIBS resource initialization
@@ -30,6 +31,7 @@ app.use((req, res, next) => {
 
 // get ROUTES to project
 app.get('/', (req, res) => res.json ('index on!!!'))
+app.use('/products', ProductsRoutes)
 
 
 //
