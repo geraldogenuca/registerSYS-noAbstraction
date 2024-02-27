@@ -9,16 +9,6 @@ const mysql = require('mysql2')
     "password": process.env.DB_PASS
 })
 
-/* const pool = mysql.createPool({
-    "connectionLimit": 1000,
-    "host": 'localhost',
-    "port": 3306,
-    "database": 'api_noAbstraction',
-    "user": 'root',
-    "password": 'root'
-}) */
-
-
 console.log('pool created')
 
 //
