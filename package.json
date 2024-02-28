@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/geraldogenuca/apiREST-noAbstraction#readme",
   "dependencies": {
+    "apirest-noabstraction": "github:geraldogenuca/apiREST-noAbstraction",
     "bcrypt": "^5.1.1",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",

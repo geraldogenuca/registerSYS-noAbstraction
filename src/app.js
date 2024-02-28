@@ -31,7 +31,7 @@ app.use((req, res, next) => {
 
 // get ROUTES to project
 app.get('/', (req, res) => res.json ('index on!!!'))
-app.use('/products', ProductsRoutes)
+app.use('/', ProductsRoutes)
 
 
 // ERROS treatment
