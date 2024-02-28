@@ -1,13 +1,11 @@
-const e = require("express")
-const express = require("express")
-, mysql = require("../config/mysql")
+const mysql = require("../config/mysql")
 
 module.exports = {
     async createProducts(req, res) {
         try {
             const query = 'INSERT INTO products (name, price, description, image) VALUES (?,?,?,?);'
             , result = await mysql.execute(query, [
-                req.body.name, req.body.price, req.body.description, req.body.image
+                req.body.name, req.body.price, req.body.description, req.file.path
             ])
             , response = {
                 msg: `Product id: ${result.insertId}, created successfully!`,
@@ -16,10 +14,10 @@ module.exports = {
                     name: req.body.name,
                     price: req.body.price,
                     description: req.body.description,
-                    image: req.body.image,
+                    image: req.file.path,
                     request: {
-                        type: "POST",
-                        description: "Inserted product!",
+                        type: 'POST',
+                        description: 'Inserted product!',
                         url: process.env.API_URL + 'products/' + result.insertId
                     }
                 }
@@ -31,7 +29,7 @@ module.exports = {
     },
     async indexProduct(req, res) {
         try {
-            const query = "SELECT * FROM products;"
+            const query = 'SELECT * FROM products;'
             , result = await mysql.execute(query, [req.query.idProduct])
             , response = {
                 length: result.length,
@@ -43,7 +41,7 @@ module.exports = {
                         description: prod.description,
                         image: prod.image,
                         request: {
-                            type: "GET",
+                            type: 'GET',
                             description: 'Return index all products!',
                             url:  process.env.API_URL + `products/` + prod.idProduct
                         }
@@ -58,11 +56,11 @@ module.exports = {
     },
     async oneProduct(req, res) {
         try {
-            const query = 'SELECT * FROM products WHERE idProduct = ?;';
-            const result = await mysql.execute(query, [req.params.idProduct]);
+            const query = 'SELECT * FROM products WHERE idProduct = ?;'
+            , result = await mysql.execute(query, [req.params.idProduct])
     
             
-            const response = {
+            , response = {
                 product: {
                     idProduct: result[0].idProduct,
                     name: result[0].name,
@@ -70,7 +68,7 @@ module.exports = {
                     description: result[0].description,
                     image: result[0].image,
                     request: {
-                        type: "GET",
+                        type: 'GET',
                         description: 'Return index all products!',
                         url:  process.env.API_URL + `products/` + result[0].idProduct
                     }
@@ -89,7 +87,7 @@ module.exports = {
                                price        = ?,
                                description  = ?,
                                image        = ?
-                         WHERE idProduct    = ?`;
+                         WHERE idProduct    = ?;`
             await mysql.execute(query, [
                 req.body.name, req.body.price,
                 req.body.description, req.body.image, req.params.idProduct
@@ -118,7 +116,7 @@ module.exports = {
     },
     async deletedProduct(req, res) {
         try {
-            const query = `DELETE FROM products WHERE idProduct = ?`;
+            const query = `DELETE FROM products WHERE idProduct = ?;`
             await mysql.execute(query, [req.params.idProduct]);
 
             const response = {
