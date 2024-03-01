@@ -5,6 +5,7 @@ const express = require('express')
 
 // routes import
 , ProductsRoutes = require('./routes/products.routes')
+, UsersRoutes = require('./routes/users.routes')
 
 
 // LIBS resource initialization
@@ -33,6 +34,7 @@ app.use((req, res, next) => {
 // get ROUTES to project
 app.get('/', (req, res) => res.json ('index on!!!'))
 app.use('/', ProductsRoutes)
+app.use('/', UsersRoutes)
 
 
 // ERROS treatment

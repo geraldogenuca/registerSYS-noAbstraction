@@ -39,7 +39,6 @@ module.exports = {
                         name: prod.name,
                         price: prod.price,
                         description: prod.description,
-                        image: prod.image,
                         request: {
                             type: 'GET',
                             description: 'Return index all products!',
@@ -48,7 +47,7 @@ module.exports = {
                     }
                 })
             }
-
+            
             res.status(200).json(response)
         } catch (error) {
             res.status(500).json({ error: error })
@@ -66,7 +65,7 @@ module.exports = {
                     name: result[0].name,
                     price: result[0].price,
                     description: result[0].description,
-                    image: result[0].image,
+                    //image: result[0].image,
                     request: {
                         type: 'GET',
                         description: 'Return index all products!',
@@ -99,8 +98,8 @@ module.exports = {
                     productId: req.params.idProduct,
                     name: req.body.name,
                     price: req.body.price,
-                    price: req.body.description,
-                    price: req.body.image,
+                    description: req.body.description,
+                    //image: req.body.image,
                     request: {
                         type: 'GET',
                         description: 'Updated product specific!',
