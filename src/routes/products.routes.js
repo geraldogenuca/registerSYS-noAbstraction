@@ -1,43 +1,6 @@
 const express = require("express")
 , routes = express.Router()
-, multer = require('multer')
-, path = require('path')
-
-//
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'public/image/');
-    },
-    filename: function(req, file, cb) {
-        cb(
-            null, 
-            `${
-                file.fieldname
-            }-${
-                new Date().toLocaleDateString().split("/")
-            }_${
-                file.originalname
-            }`
-        );
-    }
-})
-
-const fileFilter = (req, file, cb) => {
-    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-        cb(null, true)
-    } else {
-        cb(null, false)
-    }
-}
-
-const upload = multer({
-    storage: storage,
-    limits: {
-        fileSize: 1024 * 1024 * 5
-    },
-    fileFilter: fileFilter
-})
-
+, upload = require('../middlewares/imgMiddle')
 
 // Controllers imports
 , ProductsControllers = require('../controllers/products-controllers')
