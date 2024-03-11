@@ -76,7 +76,7 @@ module.exports = {
 
             res.status(200).json(response)
         } catch (error) {
-            res.status(500).send({ error: error });
+            res.status(500).send({ error: error })
         }
     },
     async updatedProduct(req, res) {
@@ -94,7 +94,7 @@ module.exports = {
             
             const response = {
                 message: 'Produto atualizado com sucesso',
-                upatedProduct: {
+                updatedProduct: {
                     productId: req.params.idProduct,
                     name: req.body.name,
                     price: req.body.price,
@@ -108,15 +108,15 @@ module.exports = {
                 }
             }
 
-            res.status(202).send(response);
+            res.status(202).send(response)
         } catch (error) {
-            res.status(500).json({ error: error });
+            res.status(500).json({ error: error })
         }
     },
     async deletedProduct(req, res) {
         try {
-            const query = `DELETE FROM products WHERE idProduct = ?;`
-            await mysql.execute(query, [req.params.idProduct]);
+            const query = `DELETE FROM products WHERE idProduct = ?`
+            await mysql.execute(query, [req.params.idProduct])
 
             const response = {
                 message: `Product id: ${req.params.idProduct}, removed successfully!`,
@@ -126,9 +126,9 @@ module.exports = {
                     url: process.env.API_URL + 'product' + req.params.idProduct
                 }
             }
-            res.status(202).send(response);
+            res.status(202).send(response)
         } catch (error) {
-            res.status(202).send({ error: error });
+            res.status(500).send({ error: error })
         }
     }
 }

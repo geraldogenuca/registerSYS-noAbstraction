@@ -34,7 +34,7 @@ module.exports = {
             , result = await mysql.execute(query, [req.body.email])
 
             if (result.length < 1) {
-                res.status(401).send({ msg: 'Authentic failed!' })
+                res.status(401).send({ message: 'Authentication failed!' })
             }
 
             if(await bcrypt.compare(req.body.password, result[0].password)) {
@@ -47,15 +47,15 @@ module.exports = {
                 )
 
                 return res.status(200).send({
-                    message: 'Authenticate successfully!',
+                    message: 'Authentication successfully!',
                     idUsers: result[0].idUsers,
                     token: token
                 }) 
                 }           
-            res.status(401).send({ msg: 'Authentic failed!' })
+            res.status(401).send({ message: 'Authentication failed!' })
     
         } catch (error) {
-            return res.status(500).send({ msg: 'Authentic failed!' });
+            return res.status(500).send({ message: 'Authentication failed!' })
         }
     }
 }
