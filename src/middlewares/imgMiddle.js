@@ -1,6 +1,6 @@
 const multer = require('multer')
 
-//
+// Controller upload image.
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'public/image/');

@@ -1,14 +1,13 @@
 const express = require('express')
 , routes = express.Router()
 
-//
+// Controllers imports.
 , UsersControllers = require('../controllers/users-controllers')
 
-
-
-//
-routes.post('/users', UsersControllers.createUser)
-routes.post('/users/login', UsersControllers.loginUsers)
+// Users routes.
+routes 
+    .post('/users', UsersControllers.createUser)
+    .post('/users/login', UsersControllers.loginUsers)
 
 
 module.exports = routes
